@@ -1,0 +1,49 @@
+<style lang="less">
+  .panel {
+    width: 100%;
+    text-align: left;
+    font-size: 28rpx;
+    padding: 20rpx 50rpx;
+    box-sizing: border-box;
+    .title {
+      padding-bottom: 20rpx;
+      font-size: 36rpx;
+    }
+    .info {
+      padding:20rpx 0 0 0;
+      image{
+        width:36rpx;
+        height:36rpx;
+        vertical-align: top;
+        margin-right:20rpx;
+      }
+      text{
+        color:#444444;
+      }
+      .go{
+        float:right;
+      }
+    }
+    .testcounter {
+      margin-top: 15rpx;
+      position: absolute;
+    }
+    .counterview {
+      margin-left: 120rpx;
+    }
+  }
+</style>
+<template>
+  <view class="panel">
+    <slot name="title">
+    </slot>
+    <slot>
+    </slot>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class Panel extends wepy.component {
+  }
+</script>
