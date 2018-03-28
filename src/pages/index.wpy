@@ -4,52 +4,45 @@
     flex-direction: column;
     align-items: center;
 }
-
 .userinfo-avatar {
     width: 80rpx;
     height: 80rpx;
     border-radius: 50%;
 }
-
 .userinfo-nickname {
     color: #aaa;
 }
-.image-list{
-  padding:10rpx 50rpx;
-  .image-list-title{
-    height:34rpx;
-    image{
-      width:32rpx;
-      height:27rpx;
-      margin-right:10rpx;
+.image-list {
+    padding: 10rpx 50rpx;
+    .image-list-title {
+        height: 34rpx;
+        image {
+            width: 32rpx;
+            height: 27rpx;
+            margin-right: 10rpx;
+        }
+        text {
+            font-size: 28rpx;
+            color: #444444;
+        }
     }
-    text{
-      font-size: 28rpx;
-      color:#444444;
+    .image-items {
+        padding-top: 20rpx;
+        image {
+            display: inline-block;
+            width: 204rpx;
+            height: 204rpx;
+            margin: 0 10rpx 10rpx 0;
+            padding: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+            float: left;
+        }
     }
-  }
-  .image-items{
-    padding-top:20rpx;
-    image{
-      display:inline-block;
-      width:204rpx;
-      height:204rpx;
-      margin:0 10rpx 10rpx 0;
-      padding:0;
-      overflow:hidden;
-      box-sizing: border-box;
-      float:left;
-    }
-  }
 }
-
 </style>
 <template>
 <view class="container">
-  <!-- <view class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-      <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
-    </view> -->
   <panel>
     <view class="title" slot="title">大连奥丰装饰</view>
     <view class="info go" @tap="map">
@@ -85,15 +78,16 @@ export default class Index extends wepy.page {
   config = {
     navigationBarTitleText: '大连奥丰装饰'
   }
+  
   components = {
     panel: Panel
   }
+
   data = {
     companyName: '大连奥丰建筑工程有限公司',
     companyPhone: '(0411) 8407 0099‬',
     companySpirit: '企业精神：竭诚，一次装修成知己；有信，四海铸百年基业。',
-    pictures: [
-      {
+    pictures: [{
         small: 'https://thumbnail10.baidupcs.com/thumbnail/005baaa1906a8e7f3ac210a4af0419bf?fid=2886544941-250528-293971182930192&time=1521993600&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-7hPiN4mMy61gQ0qHiTy5QCZH7Ag%3d&expires=8h&chkbd=0&chkv=0&dp-logid=1948440721046614669&dp-callid=0&size=c256_u256&quality=90&vuk=2886544941&ft=image',
         big: [
           'https://thumbnail10.baidupcs.com/thumbnail/005baaa1906a8e7f3ac210a4af0419bf?fid=2886544941-250528-293971182930192&time=1521993600&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-7hPiN4mMy61gQ0qHiTy5QCZH7Ag%3d&expires=8h&chkbd=0&chkv=0&dp-logid=1948440721046614669&dp-callid=0&size=c1280_u800&quality=90&vuk=2886544941&ft=image'
@@ -120,7 +114,7 @@ export default class Index extends wepy.page {
       {
         small: 'https://thumbnail10.baidupcs.com/thumbnail/45476c21b44e5fe2c631cf72180c3686?fid=2886544941-250528-423038751277923&time=1521993600&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-8sw3S6psO%2bl1fSEy1S%2fE9H59ifI%3d&expires=8h&chkbd=0&chkv=0&dp-logid=1948440721046614669&dp-callid=0&size=c256_u256&quality=90&vuk=2886544941&ft=image',
         big: [
-          'https://thumbnail10.baidupcs.com/thumbnail/45476c21b44e5fe2c631cf72180c3686?fid=2886544941-250528-423038751277923&time=1521993600&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-8sw3S6psO%2bl1fSEy1S%2fE9H59ifI%3d&expires=8h&chkbd=0&chkv=0&dp-logid=1948440721046614669&dp-callid=0&size=c1280_u800&quality=90&vuk=2886544941&ft=image'
+          'https://thumbnail10.baidupcs.com/thumbnail/45476c21b44e5fe2c631cf72180c3686?fid=2886544941-250528-423038751277923&time=1522278000&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-50TxFXp6LZY9DhrTc%2bgnUYRKz3k%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2025136629300863614&dp-callid=0&size=c1280_u800&quality=90&vuk=2886544941&ft=image'
         ]
       },
       {
@@ -131,35 +125,36 @@ export default class Index extends wepy.page {
       }
     ]
   }
+
   methods = {
-  map() {
-    wepy.openLocation({
-      latitude: 38.937364,
-      longitude: 121.591596,
-      scale: 14,
-      name: '大连奥丰建筑工程有限公司',
-      address: ''
-    })
-  },
-  phone() {
-    console.log('call');
-    wepy.makePhoneCall({
-      phoneNumber: '041184070099‬'
-    })
-  },
-  //图片点击事件
-  image: function(event) {
-    var src = event.currentTarget.dataset.src; //获取data-src
-    var imgList = event.currentTarget.dataset.list; //获取data-list
-    wepy.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList // 需要预览的图片http链接列表
-    })
+    map() {
+      wepy.openLocation({
+        latitude: 38.937364,
+        longitude: 121.591596,
+        scale: 14,
+        name: '大连奥丰建筑工程有限公司',
+        address: ''
+      })
+    },
+    phone() {
+      console.log('call');
+      wepy.makePhoneCall({
+        phoneNumber: '041184070099‬'
+      })
+    },
+    //图片点击事件
+    image: function(event) {
+      var src = event.currentTarget.dataset.src; //获取data-src
+      var imgList = event.currentTarget.dataset.list; //获取data-list
+      wepy.previewImage({
+        current: src, // 当前显示图片的http链接
+        urls: imgList // 需要预览的图片http链接列表
+      })
+    }
   }
-}
 
   events = {}
 
-  onLoad(){}
+  onLoad() {}
 }
 </script>
